@@ -2,16 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { useRestraunts } from './utils/useRestraunts';
 import { useReveiws } from './utils/useReviews';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, GoogleAuthProvider } from "firebase/auth";
-import React, { Component } from 'react';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import React from 'react';
 import { RestrauntOverView } from './utils/RestrauntOverview';
-// import { Link, Route, Routes } from 'react-router-dom';
-// import { useNavigate } from 'react-router';
-import { Reviews } from './utils/Reviews';
-import { Restraunts } from './utils/Restraunts';
-import { Restraunt} from './utils/Restraunt'
-import { Review } from './utils/Review';
-import { NewReview } from './utils/NewReview';
 
 class Resturant {
   id;
@@ -32,9 +25,8 @@ class ReviewObj {
 }
 
 function App() {
-  const [task, setTask] = useState("")
   const [restraunts, addRestraunt, updateRestraunt, getRestrauntById] = useRestraunts();
-  const [reviews, addReview, getReviewsByRestrauntId] = useReveiws();
+  const [reviews, addReview] = useReveiws();
   const [user, setUser] = useState(null)
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -43,9 +35,7 @@ function App() {
   const [currPoi, setCurrPoi] = useState(null);
   const [restrauntOpen, setRestrauntOpen] = useState(false);
   const [selectedRestraunt, setSelectedRestraunt] = useState(null);
-  const [currRestrauntReviews, setCurrRestrauntReviews] = useState([]);
   const [newReviewOpen, setNewReviewOpen] = useState(false);
-
   const [title, setTitle] = useState("");
   const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
@@ -116,7 +106,7 @@ function App() {
     let currentIndex = array.length,  randomIndex;
   
     // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
   
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -134,7 +124,7 @@ function App() {
 
   const signIn = async () => {
     const auth = getAuth();
-    const { user } = await signInWithEmailAndPassword(auth, userEmail, userPassword);
+    await signInWithEmailAndPassword(auth, userEmail, userPassword);
 
   }
 
@@ -142,7 +132,7 @@ function App() {
     const auth = getAuth();
     // console.log(userEmail);
     // console.log(userPassword);
-    const { user } = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
+    await createUserWithEmailAndPassword(auth, userEmail, userPassword);
   }
 
   const logout = async () => {

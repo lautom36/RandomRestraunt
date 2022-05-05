@@ -33,21 +33,7 @@ export const useReveiws = () => {
   }
 
 
-  const getReviewsByRestrauntId = async (id) => {
-    if ( id !== null) {
-      const db = getFirestore();
-      const q = query(collection(db, "reviews"), where("restrauntId", "==", id));
-      onSnapshot(q, (snapshot) => {
-        snapshot.docs.forEach((doc) => {
-        });
-      });
-      return reviews[0];
-    }
-    
-    return null;
-  }
-
-  return [reviews, addReview, getReviewsByRestrauntId];
+  return [reviews, addReview];
 }
 
 class Review {

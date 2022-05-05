@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { doc, addDoc, collection, onSnapshot, setDoc, getFirestore, query, where, QuerySnapshot } from "firebase/firestore";
+import { doc, collection, onSnapshot, setDoc, getFirestore, } from "firebase/firestore";
 export const useRestraunts = () => {
   const [restraunts, setRestraunts] = useState([]);
   const restrauntRef = useRef([]);
@@ -65,14 +65,4 @@ export const useRestraunts = () => {
   }
 
   return [restraunts, addRestraunt, updateRestraunt, getRestrauntById];
-}
-
-class Resturant {
-  id;
-  address;
-  name;
-  phoneNumber;
-  url;
-  ratingTotal;
-  ratingCount;
 }
