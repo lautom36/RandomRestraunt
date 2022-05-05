@@ -1,5 +1,9 @@
 .App {
+  display: flex;
   text-align: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 
 .App-logo {
@@ -13,26 +17,46 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.left {
+  height: 100vh;
+  width: 50vw;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: gray;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.right {
+  background-color:bisque;
+  height: 100vh;
+  width: 50vw;
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.reviewContainer {
+  background-color: #61dafb;
+  margin: 8px;
+}
+
+.uiContainer {
+  display: flex;
+}
+
+.signoutButton {
+  margin: 8px;
+  height: 32px;
+}
+
+.restraunt {
+  background-color: #61dafb;
+  margin: 8px;
+}
+
+.reviewTitleRating {
+  display: flex;
+  flex-direction: row;
+}
+
+.reviewTitleRating h3:nth-of-type(2) {
+  padding-left: 24px;
+  text-align: left;
 }
